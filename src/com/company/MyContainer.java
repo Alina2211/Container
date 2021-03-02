@@ -37,6 +37,7 @@ public class MyContainer {
      */
     MyContainer (int[] arr, int n)
     {
+        int size = 10;
         for (int i=0; i<n; i++)
         {
             if (quantity==size)
