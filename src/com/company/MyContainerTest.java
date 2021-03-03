@@ -1,13 +1,16 @@
 package com.company;
 
+import org.junit.Assert;
 import org.junit.Before;
 
 import static org.junit.Assert.*;
 
 public class MyContainerTest {
 
-    int[] arr = {1, 2, 3, 4, 5};
-    MyContainer example = new MyContainer(arr, 5);
+
+        int[] arr = {1, 2, 3, 4, 5};
+        MyContainer example = new MyContainer(arr);
+
 
     @org.junit.Test
     public void getNumber() {
@@ -17,12 +20,16 @@ public class MyContainerTest {
     @org.junit.Test
     public void addNumber() {
         example.addNumber(6);
-        assertEquals(6, example.getNumber(5));
+        int[] copy = example.getMyArray();
+        int[] expected = {1, 2, 3, 4, 5, 6};
+        Assert.assertArrayEquals(expected, copy);
     }
 
     @org.junit.Test
     public void deleteNumber() {
         example.deleteNumber(2);
-        assertEquals(4, example.getNumber(2));
+        int[]expected = {1, 2, 4, 5};
+        int[]realArray = example.getMyArray();
+        Assert.assertArrayEquals(expected, example.getMyArray());
     }
 }

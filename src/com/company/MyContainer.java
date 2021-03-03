@@ -10,7 +10,7 @@ public class MyContainer {
     /** Поле - массив целых чисел*/
     int[] myArray;
     /** Поле - фактическое количество хранимых чисел в массиве*/
-    int quantity=0;
+    int quantity;
 
     /**
      * Конструктор по умолчанию
@@ -19,10 +19,11 @@ public class MyContainer {
     MyContainer ()
     {
         size=10;
+        quantity=0;
         myArray = new int[size];
     }
     /**
-     * Конструктор создания контейнера с заданным размером
+     * Конструктор создания пустого контейнера с заданным размером
      * @see MyContainer#MyContainer(int)
      */
     MyContainer (int n)
@@ -33,20 +34,31 @@ public class MyContainer {
 
     /**
      * Констуктор создания контейнера по заданному массиву
-     * @see MyContainer#MyContainer(int[], int)
+     * @see MyContainer#MyContainer(int[])
      */
-    MyContainer (int[] arr, int n)
+    MyContainer (int[] arr)
     {
-        int size = 10;
-        for (int i=0; i<n; i++)
+        size = arr.length;
+        quantity=arr.length;
+        myArray = new int[size];
+        for (int i=0; i<size; i++)
         {
-            if (quantity==size)
-            {
-                arrayExtent();
-            }
             myArray[i]= arr[i];
-            quantity++;
         }
+    }
+    public int[] getMyArray(){
+        int[] copy = new int[quantity];
+        for (int i=0; i<quantity; i++)
+            copy[i]=myArray[i];
+        return copy;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public int getQuantity(){
+        return quantity;
     }
     /**
      * Метод добавления нового числа в контейнер
@@ -56,7 +68,7 @@ public class MyContainer {
     {
         if (quantity==size)
         {
-            arrayExtent();
+            myArray=arrayExtent();
         }
         myArray[quantity]= x;
         quantity++;
@@ -82,17 +94,18 @@ public class MyContainer {
      */
     public void deleteNumber(int index)
     {
-        if (index>=0 && index<quantity)
+        if (index>=0 && index<=quantity)
         {
             for (int i=index; i<quantity-1; i++)
                 myArray[i]=myArray[i+1];
+            quantity--;
         }
         else System.out.println("Index is out of range");
     }
     /**
      * Метод расширения массива
      */
-    private void arrayExtent()
+    public int[] arrayExtent()
     {
         int[] copy = new int[size+10];
         for (int i=0; i<size; i++)
@@ -100,7 +113,6 @@ public class MyContainer {
             copy[i]=myArray[i];
         }
         size+=10;
-        myArray = null;
-        myArray = copy;
+        return copy;
     }
 }

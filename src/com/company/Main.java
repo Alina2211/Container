@@ -4,11 +4,21 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
-        MyContainer arr = new MyContainer();
-        for (int i=0; i<15; i++)
-            arr.addNumber(in.nextInt());
-        for (int i=0; i<15; i++)
-            System.out.println(arr.getNumber(i));
+
+        int[] arr1 = {1, 2, 3, 4, 5};
+        MyContainer example = new MyContainer(arr1);
+
+        int[] copy = example.getMyArray();
+        for (int i=0; i<5; i++)
+        {
+            System.out.println(copy[i]);
+        }
+        example.addNumber(6);
+       
+        copy = example.getMyArray();
+        for (int i=0; i<copy.length; i++)
+        {
+            System.out.println(copy[i]);
+        }
     }
 }
