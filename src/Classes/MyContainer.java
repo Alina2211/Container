@@ -1,4 +1,4 @@
-package com.company;
+package Classes;
 
 /**
  * Класс хранения целых чисел со свойствами
@@ -16,7 +16,7 @@ public class MyContainer {
      * Конструктор по умолчанию
      * @see MyContainer#MyContainer()
      */
-    MyContainer ()
+    public MyContainer ()
     {
         size=10;
         quantity=0;
@@ -26,7 +26,7 @@ public class MyContainer {
      * Конструктор создания пустого контейнера с заданным размером
      * @see MyContainer#MyContainer(int)
      */
-    MyContainer (int n)
+    public MyContainer (int n)
     {
         size=n;
         myArray = new int[size];
@@ -36,7 +36,7 @@ public class MyContainer {
      * Констуктор создания контейнера по заданному массиву
      * @see MyContainer#MyContainer(int[])
      */
-    MyContainer (int[] arr)
+    public MyContainer (int[] arr)
     {
         size = arr.length;
         quantity=arr.length;
@@ -84,8 +84,7 @@ public class MyContainer {
             return myArray[index];
         else
         {
-            System.out.println("Index is out of range");
-            return 0;
+            throw new RuntimeException("Index is out of range");
         }
     }
     /**
@@ -100,7 +99,7 @@ public class MyContainer {
                 myArray[i]=myArray[i+1];
             quantity--;
         }
-        else System.out.println("Index is out of range");
+        throw new RuntimeException("Index is out of range");
     }
     /**
      * Метод расширения массива

@@ -1,7 +1,7 @@
-package com.company;
+package Test;
 
+import Classes.MyContainer;
 import org.junit.Assert;
-import org.junit.Before;
 
 import static org.junit.Assert.*;
 

@@ -1,5 +1,4 @@
-package com.company;
-import java.util.Scanner;
+package Classes;
 
 public class Main {
 
@@ -14,7 +13,7 @@ public class Main {
             System.out.println(copy[i]);
         }
         example.addNumber(6);
-       
+
         copy = example.getMyArray();
         for (int i=0; i<copy.length; i++)
         {
